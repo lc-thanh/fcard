@@ -1,0 +1,180 @@
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        :root {
+            --background: url("1.jpg");
+        }
+        body {
+            background-color: black;
+            display: flex;
+            font-family: "Google Sans",serif;
+        }
+        .card {
+            position: relative;
+            margin: auto;
+            width: 1024px;
+            height: 1024px;
+            overflow: hidden;
+        }
+        .card:before{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--background);
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            transform: scale(1.1);
+        }
+        .card-inner {
+            border-radius: 48px;
+            overflow: hidden;
+            position: absolute;
+            left: 242px;
+            top: 64px;
+            width: 540px;
+            height: 896px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--background);
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 30px 20px rgba(0, 0, 0, .2);
+        }
+        .card-top {
+            color: white;
+            font-size: 18px;
+            position: relative;
+            padding: 40px 60px;
+        }
+        .card-top .controls {
+            position: absolute;
+            right: 50px; top: 40px;
+        }
+        .card-top .controls span {
+            font-size: 32px;
+            color: white;
+        }
+        .card-top .name {
+            width: 100%;
+            text-align: center;
+        }
+
+        .card-body {
+            display: block;
+        }
+        .card-body .user-info {
+            width: 100%;
+            position: relative;
+            display: inline-block;
+        }
+        .card-body .user-info .user-identity {
+            display: block;
+            width: 200px;
+        }
+        .card-body .user-info .user-identity .name {
+            margin-top: 10px;
+            text-align: center;
+            color: white;
+            display: block;
+        }
+        .card-body .user-info .statistics {
+            margin-top: 20px;
+            color: white;
+            display: block;
+            position: absolute;
+            right: 0; top: 0;
+            width: calc(100% - 200px);
+            text-align: justify;
+        }
+
+        .avatar {
+            display: block;
+            margin: auto;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+        }
+
+        .statistics .statistic-number {
+            font-size: 18px;
+            display: inline-block;
+            width: 30%;
+            text-align: center;
+        }
+        .statistic-number .number {
+            font-size: 24px;
+        }
+        .bottom-icon {
+            width: 48px;
+        }
+        .bottom-inner {
+            text-align: justify;
+        }
+        .bottom-inner:after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 0;
+        }
+        .bottom-inner img {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="capture-control" style="position: fixed; left: 0; bottom: 0; width: 400px; height: 72px; background-color: rgba(255,255,255, 0.1); border-top-right-radius: 32px; display: flex;">
+        <button style="display: inline-block; border: 0; width: 140px; height: 40px; border-radius: 99px; margin: auto;" id="changeAvatar">Change Avatar</button>
+        <button style="display: inline-block; border: 0; width: 140px; height: 40px; border-radius: 99px; margin: auto;" id="changeBackground">Change Background</button>
+    </div>
+    <div class="card" id="card">
+        <div class="card-inner">
+            <div class="card-top">
+                <div class="name editable">
+                    @kl_thanh.5150 <i class="material-icons" style="font-size: inherit">keyboard_arrow_down</i>
+                </div>
+                <span class="controls">
+                    <span class="material-icons">menu</span>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="user-info">
+                    <div class="user-identity">
+                        <img src="avatar.jpg" id="user-avatar" class="avatar" alt="avatar"/>
+                        <span class="name editable" style="font-size:20px">Lê Công Thành</span>
+                    </div>
+                    <div class="statistics">
+                        <div class="statistics-inner" style="display: block; position: relative;">
+                            <div class="statistic-number">
+                                <div class="number editable">101</div>
+                                <div class="description editable">Posts</div>
+                            </div>
+                            <div class="statistic-number">
+                                <div class="number editable">251</div>
+                                <div class="description editable">Followers</div>
+                            </div>
+                            <div class="statistic-number">
+                                <div class="number editable">1</div>
+                                <div class="description editable">Following</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 60px;">
+                <p class="bottom-inner">
+                    <img src="ins_icons/home.png" class="bottom-icon" alt="control"/>
+                    <img src="ins_icons/search.png" class="bottom-icon" alt="control"/>
+                    <img src="ins_icons/plus.png" class="bottom-icon" alt="control"/>
+                    <img src="ins_icons/heart.png" class="bottom-icon" alt="control"/>
+                    <img src="ins_icons/personal.png" class="bottom-icon" alt="control"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.editable').forEach(el => {
+            el.contentEditable = true;
+        });
+    </script>
+</body>
